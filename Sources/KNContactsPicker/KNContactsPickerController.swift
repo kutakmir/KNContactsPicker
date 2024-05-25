@@ -56,6 +56,7 @@ class KNContactsPickerController: UITableViewController {
         self.tableView.register(KNContactCell.self, forCellReuseIdentifier: CELL_ID)
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = settings.pickerTitle
+        self.toolbarItems = settings.toolbarItems
         self.tableView.sectionIndexColor = UIColor.lightGray
         
         self.searchResultsController = KNPickerElements.searchResultsController(settings: settings, controller: self)

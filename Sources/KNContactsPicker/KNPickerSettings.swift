@@ -120,7 +120,10 @@ public struct KNPickerSettings {
     // The colour or gradient colours to display as background
     // if contact doesn't have a thumbnail image set.
     public var contactInitialsBackgroundColor: GradientColors = GradientColors(top: #colorLiteral(red: 0.2199510634, green: 0.2199510634, blue: 0.2199510634, alpha: 1), bottom: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
-    
+
+    // Items on the toolbar
+    public var toolbarItems = [UIBarButtonItem]()
+
     public init() {}
 }
 #endif
