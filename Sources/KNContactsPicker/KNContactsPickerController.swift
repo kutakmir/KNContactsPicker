@@ -170,12 +170,18 @@ class KNContactsPickerController: UITableViewController {
         self.toggleSelected(contact)
     }
 
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let cell = tableView.cellForRow(at: indexPath) as? KNContactCell,
+              let contact = cell.contactModel?.contact
+        else { return nil }
         let contactModel = KNContactCellModel(contact: contact, settings: settings, formatter: formatter)
         return settings.leadingCellSwipeActionConfiguration?(cell, indexPath, contactModel)
     }
 
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let cell = tableView.cellForRow(at: indexPath) as? KNContactCell,
+              let contact = cell.contactModel?.contact
+        else { return nil }
         let contactModel = KNContactCellModel(contact: contact, settings: settings, formatter: formatter)
         return settings.trailingCellSwipeActionConfiguration?(cell, indexPath, contactModel)
     }
