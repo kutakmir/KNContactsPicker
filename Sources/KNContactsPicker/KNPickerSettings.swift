@@ -126,6 +126,9 @@ public struct KNPickerSettings {
 
     public var cellConfiguration: ((_ cell: KNContactCell, _ indexPath: IndexPath, _ model: KNContactCellModel) -> Void)?
 
+    public var leadingCellSwipeActionConfiguration: ((_ cell: KNContactCell, _ indexPath: IndexPath, _ model: KNContactCellModel) -> UISwipeActionsConfiguration?)?
+    public var trailingCellSwipeActionConfiguration: ((_ cell: KNContactCell, _ indexPath: IndexPath, _ model: KNContactCellModel) -> UISwipeActionsConfiguration?)?
+
     public init() {}
 }
 #endif
