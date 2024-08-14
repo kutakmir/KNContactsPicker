@@ -68,6 +68,16 @@ open class KNContactsPicker: UINavigationController {
         switch settings.pickerContactsSource {
         case .userProvided:
             self.sortingOutcome = KNContactUtils.sortContactsIntoSections(contacts: settings.pickerContactsList, sortingType: settings.displayContactsSortedBy)
+            if let controller = self.topViewController as? KNContactsPickerController {
+                controller.contacts = sortingOutcome?.sortedContacts ?? []
+                controller.sortedContacts = sortingOutcome?.contactsSortedInSections ?? [:]
+                controller.sections = sortingOutcome?.sections ?? []
+                controller.tableView.reloadData()
+            } else {
+                let contactPickerController = self.getContactsPicker()
+                self.presentationController?.delegate = contactPickerController
+                self.viewControllers.append(contactPickerController)
+            }
         case .default:
             requestAndSortContacts { [weak self] result in
                 guard let self = self else { return }
